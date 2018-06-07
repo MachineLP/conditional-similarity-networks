@@ -42,7 +42,9 @@ class ConditionalSimNet(nn.Module):
             # no gradients for the masks
             self.masks.weight = torch.nn.Parameter(torch.Tensor(mask_array), requires_grad=False)
     def forward(self, x, c):
+        # 通过net得到特征向量。
         embedded_x = self.embeddingnet(x)
+        # self.masks定义的是[n_conditions, embedding_size],也就是n_conditions行embedding_size列，而self.masks(c)只是取其中第c列的值。
         self.mask = self.masks(c)
         if self.learnedmask:
             self.mask = torch.nn.functional.relu(self.mask)
