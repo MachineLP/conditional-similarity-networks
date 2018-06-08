@@ -121,7 +121,7 @@ def torch_inference(img_path, c=0):
     with torch.no_grad():
         embedded, masknorm_norm, embed_norm, tot_embed_norm = t_net(img, c)
         print (embedded)
-    return
+    return embedded[0]
 
 if __name__ == '__main__':
     img_path = 'lp.jpg'
