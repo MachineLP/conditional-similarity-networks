@@ -112,9 +112,9 @@ def resnet18(pretrained=False, **kwargs):
     Args:
         pretrained (bool): If True, returns a model pre-trained on ImageNet
     """
-    state = model.state_dict()
-    # loaded_state_dict = model_zoo.load_url(model_urls['resnet18'])
-    checkpoint = torch.load('./mdoel_resnet_18/resnet18-5c106cde.pth')
+    # state = model.state_dict()
+    # checkpoint = torch.load('./mdoel_resnet_18/resnet18-5c106cde.pth')
+    loaded_state_dict = model_zoo.load_url(model_urls['resnet18'])
     if pretrained:
         state = model.state_dict()
         loaded_state_dict = model_zoo.load_url(model_urls['resnet18'])
